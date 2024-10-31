@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "title": "Zrobić laboratorium 1 na ARIUS",
+      "details" : "aplikacja to do",
+      "deadline": "2024-11-6T23:30",
+      "done": "niewykonane",
+      "stars": 5
+    },
+    {
+        "id": 2,
+        "title": "Zjeść obiad",
+        "details" : "Schabowy i buraczki",
+        "deadline": "2024-10-31T18:30",
+        "done": "wykonane",
+        "stars": 7
+    }
+  ]
