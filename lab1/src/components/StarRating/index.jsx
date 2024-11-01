@@ -3,7 +3,7 @@ import Star from '../Star';
 
 const createArray = length => [...Array(length)];
 
-export default function StarRating({totalStars=10, selectedStars=0})
+export default function StarRating({totalStars=10, selectedStars=0, onRate = f => f})
 {
     return (
         <>
@@ -11,6 +11,7 @@ export default function StarRating({totalStars=10, selectedStars=0})
                 <Star
                     key = {i}
                     selected = {selectedStars > i}
+                    onSelect = {() => selectedStars<10 ? onRate(selectedStars+1) : onRate(0)}
                 />
             ))}
         </>
