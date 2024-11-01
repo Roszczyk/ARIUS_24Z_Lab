@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IoIosAdd } from "react-icons/io";
+import { IoMdHammer } from "react-icons/io";
 
 export default function AddTask({onNewTask = f => f}) {
   const [title, setTitle] = useState('');
@@ -28,7 +28,7 @@ export default function AddTask({onNewTask = f => f}) {
       <br/>
       <input type="datetime-local" value={deadline} onChange={(e) => setDeadline(e.target.value)} required />
       <br/>
-      <button type="submit"><IoIosAdd /><br/>Dodaj zadanie</button>
+      <button type="submit"><IoMdHammer /><br/>Dodaj zadanie</button>
     </form>
     </dev>
   );

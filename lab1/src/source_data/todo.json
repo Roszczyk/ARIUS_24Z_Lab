@@ -4,7 +4,7 @@
       "title": "Zrobić laboratorium 1 na ARIUS",
       "details" : "aplikacja to do",
       "deadline": "2024-11-6T23:30",
-      "status": "niewykonane",
+      "status": "wykonane",
       "stars": 5
     },
     {
@@ -12,7 +12,15 @@
         "title": "Zjeść obiad",
         "details" : "Schabowy i buraczki",
         "deadline": "2024-10-31T18:30",
-        "status": "wykonane",
+        "status": "niewykonane",
         "stars": 7
+    },
+    {
+      "id": 3,
+      "title": "Praca inżynierska",
+      "details" : "Napisać pracę inżynierską",
+      "deadline": "2024-12-30T23:30",
+      "status": "niewykonane",
+      "stars": 10
     }
   ]
