@@ -1,7 +1,7 @@
 import React from 'react';
 import Task from '../Task';
 
-export default function TaskList({tasks = [], onRemoveTask = f => f, onRateTask = f => f})
+export default function TaskList({tasks = [], onRemoveTask = f => f, onRateTask = f => f, onChangeStatusTask = f => f})
 {
   if(!tasks.length) return <div>Brak zadań do zrobienia.</div>;
   return (
@@ -13,6 +13,7 @@ export default function TaskList({tasks = [], onRemoveTask = f => f, onRateTask 
           {...task} 
           onRemove = {onRemoveTask}
           onRate = {(id, stars) => onRateTask(id, stars)}
+          onChangeStatus = {onChangeStatusTask}
         />)
       }
     </div>

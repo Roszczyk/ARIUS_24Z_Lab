@@ -16,6 +16,14 @@ function App(){
           task.id === id ? {...task, stars} : task);
         setTasks(newTaskList);
       }}
+      onChangeStatusTask={id => {
+        const newTaskList = tasks.map(task =>
+          task.id === id
+            ? { ...task, status: task.status === "niewykonane" ? "wykonane" : "niewykonane" }
+            : task
+        );
+        setTasks(newTaskList);
+      }}
     />
   );
 }
