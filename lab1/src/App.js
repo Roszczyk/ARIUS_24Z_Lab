@@ -6,7 +6,13 @@ function App(){
   const [tasks, setTasks] = useState(tasksData);
   console.log(tasks);
   return(
-    <TaskList tasks = {tasks}/>
+    <TaskList 
+      tasks = {tasks}
+      onRemoveTask = {id => {
+        const newTaskList = tasks.filter(task => task.id !== id);
+        setTasks(newTaskList);
+      }}
+    />
   );
 }
 
