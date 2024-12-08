@@ -91,6 +91,7 @@ class TeacherCalendar(db.Model):
 
 
 def fill_database():
+    # wyczyszczenie poprzednio dodanych do bazy danych elementów (na wszelki wypadek)
     db.session.query(Lessons).delete()
     db.session.query(TeacherCalendar).delete()
     db.session.query(Teacher).delete()
@@ -131,7 +132,7 @@ def fill_database():
     teacher5 = Teacher(
         name='Patrycja', surname='Dąbrowska', description='studentka geografii i geodezji', 
         grade=4.0, phone='+41555666777', earnings=100, currency='PLN', email='patrycja@example.com',
-        subjects=[chemistry, biology]
+        subjects=[geography, biology]
     )
     db.session.add_all([teacher1, teacher2, teacher3, teacher4, teacher5]) 
 
@@ -180,6 +181,8 @@ def fill_database():
 
 if __name__ == "__main__":
     if os.path.exists('instance/database.db'):
+        # przy zmianach w modelu danych, istnienie poprzedniej bazy danych przeszkadza
+        # wobec tego jest poprzednia instancja usuwana
         os.remove('instance/database.db')
     with app.app_context():
         db.create_all()

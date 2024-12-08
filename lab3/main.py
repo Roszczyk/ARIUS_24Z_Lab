@@ -5,6 +5,8 @@ from pathlib import Path
 
 from database_model import Student, Teacher, Lessons, Subjects, TeacherCalendar
 
+
+# F1 
 def students_working_days(db):
     lessons = db.session.query(Lessons).all()
     student_on_weekdays = []
@@ -15,6 +17,7 @@ def students_working_days(db):
     return len(student_on_weekdays)
 
 
+# F2
 def teachers_weekends(db):
     lessons = db.session.query(Lessons).all()
     teacher_on_weekend = []
@@ -25,6 +28,7 @@ def teachers_weekends(db):
     return len(teacher_on_weekend)
 
 
+# F3
 def student_most_lessons(db):
     lessons = db.session.query(Lessons).all()
     student_on_lesson = []
@@ -42,6 +46,7 @@ def student_most_lessons(db):
     return chosen_student
     
 
+# F4
 def subject_most_lessons(db):
     lessons = db.session.query(Lessons).all()
     taught_subject = []
@@ -60,12 +65,14 @@ def subject_most_lessons(db):
     })
 
 
+# F5
 def maths_lessons(db):
     maths = db.session.query(Subjects).filter_by(field = "matematyka").first()
     maths_lessons = db.session.query(Lessons).filter_by(subject = maths.subject_id).all()
     return len(maths_lessons)
 
 
+# F6
 def wednesday_lessons(db):
     lessons = db.session.query(Lessons).all()
     wednesdays = 0
@@ -75,6 +82,7 @@ def wednesday_lessons(db):
     return wednesdays
 
 
+# F7 liczba 
 def teacher_on_weekday(db, teacher_surname, weekday):
     teacher_id = db.session.query(Teacher).filter_by(surname = teacher_surname).first().teacher_id
     lessons = db.session.query(Lessons).all()
@@ -86,6 +94,7 @@ def teacher_on_weekday(db, teacher_surname, weekday):
     return lessons_count
 
 
+# F7 lista
 def teacher_on_weekday_list(db, teacher_surname, weekday):
     teacher_id = db.session.query(Teacher).filter_by(surname = teacher_surname).first().teacher_id
     lessons = db.session.query(Lessons).all()
@@ -100,7 +109,10 @@ def teacher_on_weekday_list(db, teacher_surname, weekday):
             })
     return lessons_list
 
+# umieszczono wszystkie instrukcje w if name == main, żeby wywołanie funkcji z tego pliku
+# w Jupyter Notebooku nie powodowało zmiany kontekstu 
 if __name__ == "__main__":
+    # upewnienie się, że projekt uruchamiany jest w dobrym kontekście:
     os.chdir(Path(__file__).parent)
 
     app = Flask(__name__)
@@ -109,6 +121,7 @@ if __name__ == "__main__":
 
     db = SQLAlchemy()
     db.init_app(app)
+
     with app.app_context():
         print(students_working_days(db))
         print(teachers_weekends(db))
