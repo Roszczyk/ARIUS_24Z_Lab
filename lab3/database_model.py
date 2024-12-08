@@ -96,6 +96,8 @@ class TeacherCalendar(db.Model):
 
 
 def fill_database():
+    # funkcję tą ostatecznie warto by było przenieść do innego pliku i uruchamiać osobno
+
     # wyczyszczenie poprzednio dodanych do bazy danych elementów (na wszelki wypadek)
     db.session.query(Lessons).delete()
     db.session.query(TeacherCalendar).delete()
