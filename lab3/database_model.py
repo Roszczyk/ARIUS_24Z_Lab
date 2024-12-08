@@ -4,6 +4,7 @@ from flask import Flask
 import os
 from pathlib import Path
 
+# upewnienie się, że projekt uruchamiany jest w dobrym kontekście:
 os.chdir(Path(__file__).parent)
 
 app = Flask(__name__)
@@ -13,11 +14,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)
 
+
+# relacja wiele do wielu pomiędzy nauczycielami i przedmiotami
 teacher_subject_association = db.Table(
     'teacher_subjects',
     db.Column('teacher_id', db.Integer, db.ForeignKey('teachers.teacher_id'), nullable=False),
     db.Column('subject_id', db.Integer, db.ForeignKey('subjects.subject_id'), nullable=False)
 )
+
 
 class Teacher(db.Model):
     __tablename__ = "teachers"
@@ -42,6 +46,7 @@ class Teacher(db.Model):
         self.currency = currency
         self.email = email
         self.subjects = subjects
+
 
 class Student(db.Model):
     __tablename__ = "students"
