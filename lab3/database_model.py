@@ -2,6 +2,9 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timezone, time
 from flask import Flask
 import os
+from pathlib import Path
+
+os.chdir(Path(__file__).parent)
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -152,21 +155,21 @@ def fill_database():
 
     # LEKCJE:
     lessons = [
-        Lessons(lesson_date=datetime(2024, 12, 9, 10, 0), teacher_id=1, subject_id=1, student_id=1),
-        Lessons(lesson_date=datetime(2024, 12, 9, 12, 0), teacher_id=1, subject_id=2, student_id=2),
-        Lessons(lesson_date=datetime(2024, 12, 10, 14, 0), teacher_id=2, subject_id=3, student_id=3),
-        Lessons(lesson_date=datetime(2024, 12, 11, 9, 0), teacher_id=3, subject_id=1, student_id=1),
-        Lessons(lesson_date=datetime(2024, 12, 12, 11, 0), teacher_id=2, subject_id=2, student_id=2),
-        Lessons(lesson_date=datetime(2024, 12, 13, 15, 0), teacher_id=1, subject_id=3, student_id=3),
-        Lessons(lesson_date=datetime(2024, 12, 14, 10, 0), teacher_id=3, subject_id=1, student_id=1),
-        Lessons(lesson_date=datetime(2024, 12, 14, 12, 0), teacher_id=3, subject_id=2, student_id=2),
-        Lessons(lesson_date=datetime(2024, 12, 15, 14, 0), teacher_id=1, subject_id=3, student_id=3),
-        Lessons(lesson_date=datetime(2024, 12, 16, 9, 0), teacher_id=2, subject_id=1, student_id=1),
-        Lessons(lesson_date=datetime(2024, 12, 16, 11, 0), teacher_id=2, subject_id=2, student_id=2),
-        Lessons(lesson_date=datetime(2024, 12, 17, 13, 0), teacher_id=1, subject_id=3, student_id=3),
-        Lessons(lesson_date=datetime(2024, 12, 17, 15, 0), teacher_id=3, subject_id=1, student_id=1),
-        Lessons(lesson_date=datetime(2024, 12, 18, 10, 0), teacher_id=1, subject_id=2, student_id=2),
-        Lessons(lesson_date=datetime(2024, 12, 18, 14, 0), teacher_id=2, subject_id=3, student_id=3)
+        Lessons(lesson_date=datetime(2024, 12, 9, 10, 0), teacher_id=1, subject_id=1, student_id=1), 
+        Lessons(lesson_date=datetime(2024, 12, 9, 12, 0), teacher_id=1, subject_id=2, student_id=1),  
+        Lessons(lesson_date=datetime(2024, 12, 10, 14, 0), teacher_id=2, subject_id=3, student_id=1), 
+        Lessons(lesson_date=datetime(2024, 12, 10, 11, 0), teacher_id=1, subject_id=2, student_id=2), 
+        Lessons(lesson_date=datetime(2024, 12, 11, 9, 0), teacher_id=3, subject_id=1, student_id=2), 
+        Lessons(lesson_date=datetime(2024, 12, 12, 13, 0), teacher_id=2, subject_id=3, student_id=2),  
+        Lessons(lesson_date=datetime(2024, 12, 12, 15, 0), teacher_id=3, subject_id=1, student_id=2), 
+        Lessons(lesson_date=datetime(2024, 12, 13, 10, 0), teacher_id=2, subject_id=2, student_id=2),  
+        Lessons(lesson_date=datetime(2024, 12, 14, 12, 0), teacher_id=4, subject_id=1, student_id=3), 
+        Lessons(lesson_date=datetime(2024, 12, 15, 11, 0), teacher_id=4, subject_id=3, student_id=3),  
+        Lessons(lesson_date=datetime(2024, 12, 16, 10, 0), teacher_id=1, subject_id=1, student_id=1),  
+        Lessons(lesson_date=datetime(2024, 12, 17, 11, 0), teacher_id=5, subject_id=2, student_id=2),  
+        Lessons(lesson_date=datetime(2024, 12, 17, 12, 0), teacher_id=2, subject_id=3, student_id=2), 
+        Lessons(lesson_date=datetime(2024, 12, 18, 10, 0), teacher_id=1, subject_id=2, student_id=1), 
+        Lessons(lesson_date=datetime(2024, 12, 18, 13, 0), teacher_id=2, subject_id=1, student_id=2)  
     ]
     db.session.add_all(lessons)
 
