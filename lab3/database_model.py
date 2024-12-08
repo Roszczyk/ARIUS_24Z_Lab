@@ -157,7 +157,7 @@ def fill_database():
     lessons = [
         Lessons(lesson_date=datetime(2024, 12, 9, 10, 0), teacher_id=1, subject_id=1, student_id=1), 
         Lessons(lesson_date=datetime(2024, 12, 9, 12, 0), teacher_id=1, subject_id=2, student_id=1),  
-        Lessons(lesson_date=datetime(2024, 12, 10, 14, 0), teacher_id=2, subject_id=3, student_id=1), 
+        Lessons(lesson_date=datetime(2024, 12, 10, 14, 0), teacher_id=2, subject_id=1, student_id=1), 
         Lessons(lesson_date=datetime(2024, 12, 10, 11, 0), teacher_id=1, subject_id=2, student_id=2), 
         Lessons(lesson_date=datetime(2024, 12, 11, 9, 0), teacher_id=3, subject_id=1, student_id=2), 
         Lessons(lesson_date=datetime(2024, 12, 12, 13, 0), teacher_id=2, subject_id=3, student_id=2),  

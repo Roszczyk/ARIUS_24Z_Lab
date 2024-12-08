@@ -53,19 +53,52 @@ def student_most_lessons():
     
 
 def subject_most_lessons():
-    pass
+    lessons = db.session.query(Lessons).all()
+    taught_subject = []
+    for lesson in lessons:
+        taught_subject.append(lesson.subject)
+    max_subject = [None, 0]
+    for sub in set(taught_subject):
+        current_count = taught_subject.count(sub)
+        if current_count > max_subject[1]:
+            max_subject[0] = sub
+            max_subject[1] = current_count
+    chosen_subject = db.session.query(Subjects).filter_by(subject_id = max_subject[0]).first()
+    return dict({
+        "subject_name" : chosen_subject.field,
+        "quantity" : max_subject[1]
+    })
+
 
 def maths_lessons():
-    pass
+    maths = db.session.query(Subjects).filter_by(field = "matematyka").first()
+    maths_lessons = db.session.query(Lessons).filter_by(subject = maths.subject_id).all()
+    return len(maths_lessons)
+
 
 def wednesday_lessons():
-    pass
+    lessons = db.session.query(Lessons).all()
+    wednesdays = 0
+    for lesson in lessons:
+        if lesson.lesson_date.weekday() == 2:
+            wednesdays = wednesdays + 1
+    return wednesdays
 
-def teachers_list(teacher_id):
-    pass
+def teacher_on_weekday(teacher_id, weekday):
+    lessons = db.session.query(Lessons).all()
+    lessons_count = 0
+    for lesson in lessons:
+        if lesson.lesson_date.weekday() == weekday \
+                and lesson.teacher == teacher_id:
+            lessons_count = lessons_count + 1
+    return lessons_count
 
-
-with app.app_context():
-    print(students_working_days())
-    print(teachers_weekends())
-    print(student_most_lessons())
+if __name__ == "__main__":
+    with app.app_context():
+        print(students_working_days())
+        print(teachers_weekends())
+        print(student_most_lessons())
+        print(subject_most_lessons())
+        print(maths_lessons())
+        print(wednesday_lessons())
+        print(teacher_on_weekday(1, 0))
