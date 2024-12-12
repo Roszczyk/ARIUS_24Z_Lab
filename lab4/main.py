@@ -73,7 +73,6 @@ def book_lesson():
     
     # sprawdzenie czy dany wskazany termin jest zarezerwowany
     lessons = db.session.query(Lessons).filter_by(teacher=teacher_id, lesson_date = when).all()
-    print(lessons)
     if lessons:
         return jsonify({'Error': f'Podany termin ({when}) jest juz zarezerwowany'}), 400
     

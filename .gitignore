@@ -2,3 +2,5 @@ flask_arius/**
 lab3/sprawozdanie.pdf
 **/node_modules/**
 **/__pycache__/**
+lab4/wireshark-results.pcap
+lab4/sprawozdanie.pdf
