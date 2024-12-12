@@ -1,3 +1,4 @@
 flask_arius/**
 lab3/sprawozdanie.pdf
 **/node_modules/**
+**/__pycache__/**
