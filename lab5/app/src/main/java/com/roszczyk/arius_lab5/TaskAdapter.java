@@ -30,7 +30,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         taskTitle.setText(task.getTitle());
         taskDeadline.setText(task.getDeadline());
 
-        int iconRes = task.getStatus().equals("completed") ?
+        int iconRes = task.getStatus() ?
                 android.R.drawable.presence_online :
                 android.R.drawable.presence_offline;
         taskStatusIcon.setImageResource(iconRes);
