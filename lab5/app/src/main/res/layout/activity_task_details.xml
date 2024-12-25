@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Tytuł zadania -->
     <TextView
         android:id="@+id/taskDetailsTitle"
         android:layout_width="match_parent"
@@ -16,7 +15,6 @@
         android:textStyle="bold"
         android:paddingBottom="8dp" />
 
-    <!-- Opis zadania -->
     <TextView
         android:id="@+id/taskDetailsDescription"
         android:layout_width="match_parent"
@@ -25,7 +23,6 @@
         android:textSize="16sp"
         android:paddingBottom="8dp" />
 
-    <!-- Termin zadania -->
     <TextView
         android:id="@+id/taskDetailsDeadline"
         android:layout_width="match_parent"
@@ -34,7 +31,6 @@
         android:textSize="16sp"
         android:paddingBottom="8dp" />
 
-    <!-- Status zadania -->
     <TextView
         android:id="@+id/taskDetailsStatus"
         android:layout_width="match_parent"
@@ -43,7 +39,6 @@
         android:textSize="16sp"
         android:paddingBottom="16dp" />
 
-    <!-- Przycisk oznaczania jako zakończone -->
     <Button
         android:id="@+id/completeButton"
         android:layout_width="match_parent"
@@ -53,7 +48,6 @@
         android:padding="8dp"
         android:textColor="@android:color/white" />
 
-    <!-- Przycisk oznaczania jako oczekujące -->
     <Button
         android:id="@+id/pendingButton"
         android:layout_width="match_parent"

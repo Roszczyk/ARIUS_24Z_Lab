@@ -3,9 +3,10 @@ package com.roszczyk.arius_lab5;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.Serializable;
 
 
-public class Task {
+public class Task implements Serializable{
     private String title;
     private String details;
     private String deadline;

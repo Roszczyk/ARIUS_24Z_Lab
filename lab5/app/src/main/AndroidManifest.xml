@@ -9,7 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
 
-        <!-- Aktywność główna -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -19,7 +18,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Aktywność szczegółów -->
         <activity
             android:name=".TaskDetailsActivity"
             android:exported="false" />

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
             Task selectedTask = taskList.get(position);
             Intent intent = new Intent(MainActivity.this, TaskDetailsActivity.class);
-            intent.putExtra("task", selectedTask.getTitle());
+            intent.putExtra("task", selectedTask);
             startActivity(intent);
         });
     }
