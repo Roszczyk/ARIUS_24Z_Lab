@@ -19,6 +19,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
     private TextView statusTextView;
     private Button completeButton;
     private Button pendingButton;
+    private Task task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,15 +38,13 @@ public class TaskDetailsActivity extends AppCompatActivity {
         pendingButton = findViewById(R.id.pendingButton);
 
         Intent intent = getIntent();
-        Task task = (Task) intent.getSerializableExtra("task");
+        task = (Task) intent.getSerializableExtra("task");
 
         if (task != null) {
             titleTextView.setText(task.getTitle());
             descriptionTextView.setText(task.getDetails());
             deadlineTextView.setText(task.getDeadline());
-            if (task.getStatus()) statusTextView.setText("completed");
-            else if (task.isOverdue()) statusTextView.setText("overdue");
-            else statusTextView.setText("pending");
+            updateStatusText(task);
         }
 
         completeButton.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +52,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (task != null) {
                     task.setStatus(true);
-                    statusTextView.setText("completed");
+                    updateStatusText(task);
                 }
             }
         });
@@ -63,23 +62,40 @@ public class TaskDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (task != null) {
                     task.setStatus(false);
-                    if (task.isOverdue()) statusTextView.setText("overdue");
-                    else statusTextView.setText("pending");
+                    updateStatusText(task);
                 }
             }
         });
-
-
     }
 
-    //strzałka powrotu
+    private void updateStatusText(Task task) {
+        if (task.getStatus()) {
+            statusTextView.setText("completed");
+        } else if (task.isOverdue()) {
+            statusTextView.setText("overdue");
+        } else {
+            statusTextView.setText("pending");
+        }
+    }
+
+    // Obsługa strzałki powrotu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("updatedTask", task);
+            setResult(RESULT_OK, resultIntent);
             finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-}
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("updatedTask", task);
+        setResult(RESULT_OK, resultIntent);
+    }
+}

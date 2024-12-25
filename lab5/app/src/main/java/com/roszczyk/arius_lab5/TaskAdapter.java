@@ -11,30 +11,35 @@ import android.widget.TextView;
 import java.util.List;
 
 public class TaskAdapter extends ArrayAdapter<Task> {
+
     public TaskAdapter(Context context, List<Task> tasks) {
         super(context, 0, tasks);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.task_item, parent, false);
+        View itemView = convertView;
+        if (itemView == null) {
+            itemView = LayoutInflater.from(getContext()).inflate(R.layout.task_item, parent, false);
         }
 
-        Task task = getItem(position);
+        Task currentTask = getItem(position);
 
-        TextView taskTitle = convertView.findViewById(R.id.taskTitle);
-        TextView taskDeadline = convertView.findViewById(R.id.taskDeadline);
-        ImageView taskStatusIcon = convertView.findViewById(R.id.taskStatusIcon);
+        TextView titleTextView = itemView.findViewById(R.id.taskTitle);
+        titleTextView.setText(currentTask.getTitle());
 
-        taskTitle.setText(task.getTitle());
-        taskDeadline.setText(task.getDeadline());
+        TextView deadlineTextView = itemView.findViewById(R.id.taskDeadline);
+        deadlineTextView.setText(currentTask.getDeadline());
 
-        int iconRes = task.getStatus() ?
-                android.R.drawable.presence_online :
-                android.R.drawable.presence_offline;
-        taskStatusIcon.setImageResource(iconRes);
+        ImageView statusIcon = itemView.findViewById(R.id.taskStatusIcon);
+        if (currentTask.getStatus()) {
+            statusIcon.setImageResource(R.drawable.ic_completed);
+        } else if (currentTask.isOverdue()) {
+            statusIcon.setImageResource(R.drawable.ic_overdue);
+        } else {
+            statusIcon.setImageResource(R.drawable.ic_pending);
+        }
 
-        return convertView;
+        return itemView;
     }
 }

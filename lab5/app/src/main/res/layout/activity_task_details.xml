@@ -27,7 +27,7 @@
         android:id="@+id/taskDetailsDeadline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Deadline: 2024-12-20"
+        android:text="Deadline: 2024-12-30"
         android:textSize="16sp"
         android:paddingBottom="8dp" />
 

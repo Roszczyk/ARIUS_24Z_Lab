@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         taskList = new ArrayList<>();
         taskList.add(new Task("Task 1", "Details for Task 1", "2024-12-20", false));
         taskList.add(new Task("Task 2", "Details for Task 2", "2024-12-20", true));
+        taskList.add(new Task("Task 3", "Details for Task 3", "2024-12-30", false));
+        taskList.add(new Task("Task 4", "Details for Task 4", "2024-12-30", true));
 
         taskAdapter = new TaskAdapter(this, taskList);
         ListView listView = findViewById(R.id.taskListView);
@@ -32,7 +34,23 @@ public class MainActivity extends AppCompatActivity {
             Task selectedTask = taskList.get(position);
             Intent intent = new Intent(MainActivity.this, TaskDetailsActivity.class);
             intent.putExtra("task", selectedTask);
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Task updatedTask = (Task) data.getSerializableExtra("updatedTask");
+            if (updatedTask != null) {
+                for (int i = 0; i < taskList.size(); i++) {
+                    if (taskList.get(i).getTitle().equals(updatedTask.getTitle())) {
+                        taskList.set(i, updatedTask);
+                        break;
+                    }
+                }
+                taskAdapter.notifyDataSetChanged();
+            }
+        }
     }
 }
