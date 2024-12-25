@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,49 +9,59 @@
     <!-- Tytuł zadania -->
     <TextView
         android:id="@+id/taskDetailsTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Task Title"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
+        android:paddingBottom="8dp" />
 
-    <!-- Szczegóły zadania -->
+    <!-- Opis zadania -->
     <TextView
         android:id="@+id/taskDetailsDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Task Description"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginBottom="16dp" />
+        android:textSize="16sp"
+        android:paddingBottom="8dp" />
 
     <!-- Termin zadania -->
     <TextView
         android:id="@+id/taskDetailsDeadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deadline: YYYY-MM-DD HH:mm"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Przyciski zmiany statusu -->
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:text="Deadline: 2024-12-20"
+        android:textSize="16sp"
+        android:paddingBottom="8dp" />
 
-        <Button
-            android:id="@+id/markAsCompletedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mark as Completed" />
+    <!-- Status zadania -->
+    <TextView
+        android:id="@+id/taskDetailsStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status: Pending"
+        android:textSize="16sp"
+        android:paddingBottom="16dp" />
 
-        <Button
-            android:id="@+id/markAsPendingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mark as Pending"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
+    <!-- Przycisk oznaczania jako zakończone -->
+    <Button
+        android:id="@+id/completeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mark as Complete"
+        android:backgroundTint="@color/teal_200"
+        android:padding="8dp"
+        android:textColor="@android:color/white" />
+
+    <!-- Przycisk oznaczania jako oczekujące -->
+    <Button
+        android:id="@+id/pendingButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mark as Pending"
+        android:backgroundTint="@color/purple_200"
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp" />
+
 </LinearLayout>

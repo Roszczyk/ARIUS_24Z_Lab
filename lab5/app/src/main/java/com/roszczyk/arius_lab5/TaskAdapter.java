@@ -18,7 +18,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.task_list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.task_item, parent, false);
         }
 
         Task task = getItem(position);

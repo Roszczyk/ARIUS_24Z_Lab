@@ -1,6 +1,6 @@
 package com.roszczyk.arius_lab5;
 
-import .Task;
+import com.roszczyk.arius_lab5.Task;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +24,6 @@ public class TaskDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_details);
 
-        // Inicjalizacja widoków
         titleTextView = findViewById(R.id.taskDetailsTitle);
         descriptionTextView = findViewById(R.id.taskDetailsDescription);
         deadlineTextView = findViewById(R.id.taskDetailsDeadline);
@@ -32,35 +31,33 @@ public class TaskDetailsActivity extends AppCompatActivity {
         completeButton = findViewById(R.id.completeButton);
         pendingButton = findViewById(R.id.pendingButton);
 
-        // Pobieranie danych z intencji
         Intent intent = getIntent();
         Task task = (Task) intent.getSerializableExtra("task");
 
         if (task != null) {
-            // Ustawianie szczegółów zadania
             titleTextView.setText(task.getTitle());
-            descriptionTextView.setText(task.getDescription());
+            descriptionTextView.setText(task.getDetails());
             deadlineTextView.setText(task.getDeadline());
-            statusTextView.setText(task.getStatus());
+            if (task.getStatus()) statusTextView.setText("completed");
+            else if (task.isOverdue()) statusTextView.setText("overdue");
+            else statusTextView.setText("pending");
         }
 
-        // Obsługa przycisku "Zakończ"
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (task != null) {
-                    task.setStatus("completed");
+                    task.setStatus(true);
                     statusTextView.setText("completed");
                 }
             }
         });
 
-        // Obsługa przycisku "W toku"
         pendingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (task != null) {
-                    task.setStatus("pending");
+                    task.setStatus(false);
                     statusTextView.setText("pending");
                 }
             }
